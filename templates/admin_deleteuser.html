@@ -1,10 +1,9 @@
 {% extends "admin/base_site.html" %}
 
 {% block title %}Add Users{% endblock %}
-
 {% block content %}
 <div id="content-main">
-    <h1>Add User</h1>
+    <h1>Delete User</h1>
     {% comment %} {% if messages %}
     <ul class="messages">
         {% for message in messages %}
@@ -16,12 +15,12 @@
     {% if error %}
     {{ error }}
     {% endif %}
-    <form action="" method="POST">
-        {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Add User"/>
-        
-    </form>
+   <form method="post">{% csrf_token %}
+    Are you sure you want to delete "{{ user.username }}" ?
+    This action cannot be undone, it might be preferable to
+    set this user status to inactive.
+    <input type="submit" value="Delete" />
+</form>
 
 </div>
 {% endblock %}

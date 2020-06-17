@@ -44,6 +44,18 @@ def add_user(request):
         form = TestUserform()
     return render(request, 'admin_adduser.html', {'form':form})
 
+def delete_user(request, pk):
+    # users = get_object_or_404(Users, pk=pk)
+    user = get_object_or_404(TestUser, pk=pk)
+    if request.method=='POST':
+        # users.delete()
+        user.delete()
+        messages.success(request, ('User was successfully deleted!'))
+        return redirect('myapp:home')
+
+    con = { 'user':user}
+    return render(request, 'admin_deleteuser.html', con)
+
 @login_required
 def change_status(request, id):
     obj= get_object_or_404(TestUser, id=id)
@@ -67,7 +79,7 @@ def change_status(request, id):
 def send_email(request):
     users = TestUser.objects.all()
     emails = [email.email for email in users]
-    
+
     if request.method == 'POST':
         subject = request.POST.get('subject', '')
         message = request.POST.get('message', '')

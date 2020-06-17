@@ -45,6 +45,7 @@
             <th scope="col">Status</th>
             <th scope="col">Date created</th>
             <th></th>
+            <th></th>
             </tr>
         </thead>
         {% for user in users %}
@@ -65,6 +66,9 @@
                 <a href="{% url 'myapp:change-status' user.id %}" type="button" class="btn btn-primary">Dectivate user</a>
                 </td>
             {% endif %}
+            <td>
+                <a href="{% url 'myapp:delete-user' user.pk %}" type="button" class="btn btn-primary">Delete user</a>
+                </td>
             </tr>
             
         </tbody>

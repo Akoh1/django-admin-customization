@@ -11,4 +11,5 @@ urlpatterns = [
     path('new/user/', views.add_user, name='add-user'),
     path('send-emails/', views.send_email, name='send-emails'),
     path('change-status/<int:id>/', views.change_status, name='change-status'),
+    path('delete-user/<int:pk>/', views.delete_user, name='delete-user'),
 ]
