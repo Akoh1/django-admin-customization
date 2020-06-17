@@ -15,7 +15,7 @@ A web app to manage tasks for technical teams, You can open a workspace for your
 - Clone repository
 
     ```bash
-    git clone git@gitlab.com:e4e-pycore/disc_personality_test.git
+    git clone https://github.com/Akoh1/django-admin-customization.git
     ```
 - You'll need to have virtual enviroment installed on your machine  
 
