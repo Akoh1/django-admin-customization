@@ -1,0 +1,77 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+{% block title %}List of Users{% endblock %}
+{% block extra_head %}
+<link type="text/css" rel="stylesheet" href="{% static 'css/bootstrap.css' %}"  media="screen,projection"/>
+{% endblock %}
+{% block content %}
+<div id="content-main">
+
+    <strong><a href="{% url 'myapp:add-user' %}" type="button" class="btn btn-primary">Add user</a></strong> <br/><br/>
+    <strong><a href="{% url 'myapp:send-emails' %}" type="button" class="btn btn-primary">Send Emails to all Users</a> </strong><br/><br>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <div>
+        <strong>No of users created in last 24 hours</strong>
+        <span>{{ user_one_day }}</span>
+    </div> <br/>
+    <div>
+        <strong>No of users created in last 7 days</strong>
+        <span>{{ user_week }}</span>
+    </div> <br/>
+    <div>
+        <strong>No of users created in the past month</strong>
+        <span>{{ user_month }}</span>
+    </div> <br/>
+    <div>
+        <strong>No of Male Users</strong>
+        <span>{{ num_of_males }}</span>
+    </div> <br/>
+    <div>
+        <strong>No of Femal Users</strong>
+        <span>{{ num_of_female }}</span>
+    </div> <br/>
+    <table class="table">
+        <thead>
+            <tr>
+            {% comment %} <th scope="col">#</th> {% endcomment %}
+            <th scope="col">Username</th>
+            <th scope="col">email</th>
+            <th scope="col">Status</th>
+            <th scope="col">Date created</th>
+            <th></th>
+            </tr>
+        </thead>
+        {% for user in users %}
+        {% if user %}
+        <tbody>
+            <tr>
+            {% comment %} <th scope="row">1</th> {% endcomment %}
+            <td>{{ user.username }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.status }}</td>
+            <td>{{ user.date_created }}</td>
+            {% if user.status == 'inactive' %}
+                <td>
+                <a href="{% url 'myapp:change-status' user.id %}" type="button" class="btn btn-primary">Activate user</a>
+                </td>
+            {% else %}
+                <td>
+                <a href="{% url 'myapp:change-status' user.id %}" type="button" class="btn btn-primary">Dectivate user</a>
+                </td>
+            {% endif %}
+            </tr>
+            
+        </tbody>
+        {% else %}
+            <h1>No Users</h1>
+        {% endif %}
+        {% endfor %}
+        </table>
+</div>
+{% endblock %}

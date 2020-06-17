@@ -1,0 +1,43 @@
+{% extends "admin/base_site.html" %}
+
+{% block title %}Add Users{% endblock %}
+
+{% block content %}
+<div id="content-main">
+    <h1>Add User</h1>
+    {% comment %} {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %} {% endcomment %}
+
+    {% if error %}
+    {{ error }}
+    {% endif %}
+    <form action="" method="POST">
+        {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Add User"/>
+        {% comment %} <div>
+            <span>Username:</span>
+            <input type="text" name="username"/>
+        </div>
+        <div>
+            <span>Email:</span>
+            <input type="email" name="email"/>
+        </div>
+        <div>
+            <span>Gender:</span>
+            <input type="text" name="title"/>
+        </div>
+        Title: <input type="text" name="title"/><br/>
+        Content: <br/>
+        <textarea cols="35" rows="8" name="content">
+        </textarea><br/>
+        <input type="submit" value="Post"/> {% endcomment %}
+    </form>
+
+</div>
+{% endblock %}
