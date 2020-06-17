@@ -1,16 +1,13 @@
-# task-manager
-A web app to manage tasks for technical teams, You can open a workspace for your organizations
- and users can sign up to that workspace, create tasks, assign it milestones, change tasks milestones.
- This web app also provides RESTFUL API which would be consumed by my front-end project which would be implemented by vuejs later on. 
+# A project for Savevest test
 
-**Technology Used:** Django 2.1.5 (Python 3)
+
+**Technology Used:** Django 3.0 (Python 3)
 
  **Database:** SQLite 3 (SQLite is used because it can be safely assumed that it would not be a very busy site and enterprise level database can be avoided)
 
 
 
 ## Installation
-## clone from branch samuel 
 
 - Clone repository
 
